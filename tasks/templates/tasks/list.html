@@ -48,26 +48,43 @@
 </style>
 <h1 style="text-align: center; color: #fb5607; font-size: 125px;        text-shadow: -10px 0 black, 0 10px black, 10px 0 black, 0 -10px black;
 
-"><b>TO DO LIST</b></h1>
+"><b>MY WATCH LIST</b></h1>
 <div  class="center-column">
-	<form method="POST" action="/">
-		{% csrf_token %}
-		{{form.title}}
-		<input class="btn btn-info" type="submit" name="Create Task">
-	</form>
+	<div style="margin-bottom: 20px; text-align: center;">
+		<h3 style="color: #333; margin-bottom: 15px;">Ajouter des séries depuis TMDB</h3>
+		<a href="{% url 'add_netflix' %}" class="btn btn-danger" style="margin: 5px;">Ajouter 10 séries Netflix à ma watchlist</a>
+		<a href="{% url 'add_prime' %}" class="btn btn-warning" style="margin: 5px; background-color: #ff9900; border-color: #ff9900;">Ajouter 10 séries Amazon Prime à ma watchlist</a>
+		<a href="{% url 'add_apple' %}" class="btn btn-secondary" style="margin: 5px;">Ajouter 10 séries Apple TV à ma watchlist</a>
+		<br><br>
+		<form method="POST" action="{% url 'clear_watchlist' %}" style="display: inline-block; margin-top: 15px;" onsubmit="return confirm('Êtes-vous sûr de vouloir vider toute la watchlist ? Cette action est irréversible.');">
+			{% csrf_token %}
+			<button type="submit" class="btn btn-danger" style="background-color: #dc3545; border-color: #dc3545; padding: 12px 25px; font-size: 16px; font-weight: bold; color: white;">
+				🗑️ Vider la watchlist
+			</button>
+		</form>
+	</div>
 
-	<div class="todo-list">
-	{% for task in tasks %}
-		<div class="item-row">
-			<a class="btn btn-sm btn-info" href = "{% url 'update_task' task.id %}">Update</a>
-			<a class="btn btn-sm btn-danger" href = "{% url 'delete' task.id %}">Delete</a>
-			{% if task.complete == True %}
-			<strike>{{task}}</strike>
-			{% else %}
-			<span>{{task}}</span>
-			{% endif %}
+	<div class="todo-list" style="margin-top: 20px;">
+		{% if tasks %}
+			<p style="color: #333; text-align: center; margin-bottom: 15px; font-weight: bold;">
+				📺 {{ tasks|length }} série{{ tasks|length|pluralize }} dans votre watchlist
+			</p>
+		{% else %}
+			<p style="color: #666; text-align: center; margin-bottom: 15px;">
+				Votre watchlist est vide. Ajoutez des séries en cliquant sur les boutons ci-dessus !
+			</p>
+		{% endif %}
+		{% for task in tasks %}
+			<div class="item-row">
+				<a class="btn btn-sm btn-info" href = "{% url 'update_task' task.id %}">Update</a>
+				<a class="btn btn-sm btn-danger" href = "{% url 'delete' task.id %}">Delete</a>
+				{% if task.complete == True %}
+				<strike>{{task}}</strike>
+				{% else %}
+				<span>{{task}}</span>
+				{% endif %}
 
-		</div>
-	{% endfor %}
+			</div>
+		{% endfor %}
 	</div>
 </div>

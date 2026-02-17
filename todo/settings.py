@@ -124,3 +124,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# TMDB API Configuration
+TMDB_API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OTExZWZmYzExOGFjMjM2YTA3MzEyMWQxNzk4Y2JmZCIsIm5iZiI6MTc3MTMyMzg4NS41ODMwMDAyLCJzdWIiOiI2OTk0NDFlZDBjMTUxZWNjNTg2ZjcyN2IiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.YVzjrejB2PIb32vSvSV94EmR52arAwU6_P49cya17wI'
+TMDB_API_URL = 'https://api.themoviedb.org/3'

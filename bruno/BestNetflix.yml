@@ -1,0 +1,24 @@
+info:
+  name: BestNetflix
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: https://api.themoviedb.org/3/discover/tv?with_watch_providers=8&sort_by=vote_average_desc
+  params:
+    - name: with_watch_providers
+      value: "8"
+      type: query
+    - name: sort_by
+      value: vote_average_desc
+      type: query
+  auth:
+    type: bearer
+    token: "{{api_key}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

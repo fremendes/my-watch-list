@@ -1,0 +1,21 @@
+info:
+  name: ActionMovies
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: https://api.themoviedb.org/3/discover/tv?with_genres=10759
+  params:
+    - name: with_genres
+      value: "10759"
+      type: query
+  auth:
+    type: bearer
+    token: "{{api_key}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
