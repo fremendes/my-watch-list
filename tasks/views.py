@@ -123,10 +123,9 @@ def add_prime_series(request):
 		while series_added < 10 and page <= max_pages:
 			params = {
 				'with_watch_providers': '9',
-				'watch_region': 'FR',
+				'watch_region': 'US',
 				'sort_by': 'vote_average.desc',
 				'vote_count.gte': 500,
-				'first_air_date.gte': '2010-01-01',
 				'page': page
 			}
 			

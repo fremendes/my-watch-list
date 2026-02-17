@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: https://api.themoviedb.org/3/discover/tv?with_watch_providers=8&sort_by=vote_average_desc
+  url: https://api.themoviedb.org/3/discover/tv
   params:
     - name: with_watch_providers
       value: "8"
