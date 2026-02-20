@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+	body{
+		background-color: #3a86ff;
+	}
+	.center-column{
+		width:400px;
+		margin: 50px auto;
+		padding:30px;
+		background-color: #fff;
+		border-radius: 3px;
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+	}
+	.errorlist {
+		color: #dc3545;
+		font-size: 0.875rem;
+		margin-top: 0.25rem;
+	}
+</style>
+
+<div class="center-column">
+	<h2 style="text-align: center; color: #333; margin-bottom: 30px;">Créer un compte</h2>
+	
+	{% if form.non_field_errors %}
+		<div class="alert alert-danger">
+			{{ form.non_field_errors }}
+		</div>
+	{% endif %}
+	
+	<form method="POST">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="id_username">Nom d'utilisateur</label>
+			<input type="text" name="username" class="form-control" id="id_username" required value="{{ form.username.value|default:'' }}">
+			{% if form.username.errors %}
+				<div class="alert alert-danger" style="margin-top: 5px; padding: 8px;">
+					{{ form.username.errors }}
+				</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label for="id_password1">Mot de passe</label>
+			<input type="password" name="password1" class="form-control" id="id_password1" required>
+			{% if form.password1.errors %}
+				<div class="alert alert-danger" style="margin-top: 5px; padding: 8px;">
+					{{ form.password1.errors }}
+				</div>
+			{% endif %}
+		</div>
+		<div class="form-group">
+			<label for="id_password2">Confirmation du mot de passe</label>
+			<input type="password" name="password2" class="form-control" id="id_password2" required>
+			{% if form.password2.errors %}
+				<div class="alert alert-danger" style="margin-top: 5px; padding: 8px;">
+					{{ form.password2.errors }}
+				</div>
+			{% endif %}
+		</div>
+		{% if form.errors %}
+			<div class="alert alert-warning" style="margin-top: 10px;">
+				<strong>Attention :</strong> Le compte n'a pas été créé. Veuillez corriger les erreurs ci-dessus.
+			</div>
+		{% endif %}
+		<button type="submit" class="btn btn-primary btn-block">Créer mon compte</button>
+	</form>
+	
+	<p style="text-align: center; margin-top: 20px;">
+		Déjà un compte ? <a href="{% url 'login' %}">Se connecter</a>
+	</p>
+</div>
+

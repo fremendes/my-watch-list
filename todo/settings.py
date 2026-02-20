@@ -128,3 +128,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # TMDB API Configuration
 TMDB_API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OTExZWZmYzExOGFjMjM2YTA3MzEyMWQxNzk4Y2JmZCIsIm5iZiI6MTc3MTMyMzg4NS41ODMwMDAyLCJzdWIiOiI2OTk0NDFlZDBjMTUxZWNjNTg2ZjcyN2IiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.YVzjrejB2PIb32vSvSV94EmR52arAwU6_P49cya17wI'
 TMDB_API_URL = 'https://api.themoviedb.org/3'
+
+# Authentication
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# France Connect Configuration (v1)
+FRANCE_CONNECT_BASE_URL = 'https://fcp.integ01.dev-franceconnect.fr/api/v1'
+FRANCE_CONNECT_CLIENT_ID = '211286433e39cce01db448d80181bdfd005554b19cd51b3fe7943f6b3b86ab6e'
+FRANCE_CONNECT_CLIENT_SECRET = '2791a731e6a59f56b6b4dd0d08c9b1f593b5f3658b9fd731cb24248e2669af4b'
+FRANCE_CONNECT_REDIRECT_URI = 'http://localhost:4242/callback'
+FRANCE_CONNECT_SCOPE = 'openid profile email'
+
+# Google OAuth2 Configuration
+GOOGLE_CLIENT_ID = '892865062393-1r72r14m10kr5aolbgavbligqa4gbtot.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET = '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'
+GOOGLE_REDIRECT_URI = 'http://localhost:4242/google/callback'
+GOOGLE_SCOPE = 'openid email profile'
